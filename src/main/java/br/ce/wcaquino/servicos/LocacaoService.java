@@ -10,13 +10,24 @@ import org.junit.Test;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
+import br.ce.wcaquino.exceptions.FilmesSemEstoqueException;
+import br.ce.wcaquino.exceptions.LocadoraException;
 import br.ce.wcaquino.utils.DataUtils;
 
 public class LocacaoService {
 
-	public Locacao alugarFilme(Usuario usuario, Filme filme) throws Exception{
+	public Locacao alugarFilme(Usuario usuario, Filme filme) throws FilmesSemEstoqueException, LocadoraException{
+				
+		if(usuario == null) {
+			throw new LocadoraException("Usuario Vazio");
+		}
+		
+		if(filme == null) {
+			throw new LocadoraException("Filme Vazio");
+		}
+		
 		if(filme.getEstoque() == 0 ) {
-			throw new Exception("Filme sem estoque");
+			throw new FilmesSemEstoqueException();
 		}
 		
 		Locacao locacao = new Locacao();
