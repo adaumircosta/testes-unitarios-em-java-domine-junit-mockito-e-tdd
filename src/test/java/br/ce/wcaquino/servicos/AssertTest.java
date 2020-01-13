@@ -13,7 +13,7 @@ public class AssertTest {
 		Assert.assertTrue(true);
 		Assert.assertFalse(false);
 		
-		Assert.assertEquals("Erro de comparação", 1, 2);
+		Assert.assertEquals("Erro de comparação", 1, 1);
 		Assert.assertEquals(0.51234, 0.512, 0.001);
 		Assert.assertEquals(Math.PI, 3.14, 0.01);
 		
